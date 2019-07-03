@@ -19,24 +19,25 @@ RNPlus.backTo(pageName: string, opt?: {});
 
 - [ ] 添加配置项, 查找更灵活
 - [ ] 根据第一个参数的输入, 智能提示第二个参数中的 param
+- [ ] view输入内容的校验
+- [ ] param的校验
+- [ ] 去重
 
 
 ## Extension Settings
 
-暂未实现
 
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
 
 ### 1.0.0
 
 初始化项目
 完成对 pageName 的智能提示
+
+### 1.0.1
+更新ts项目检测方法
 
 ---
 

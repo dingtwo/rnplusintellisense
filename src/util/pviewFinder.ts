@@ -1,7 +1,7 @@
 import * as walk from 'walk-sync';
 import { workspace, CompletionItem, CompletionItemKind } from 'vscode';
 import * as path from 'path';
-import { statSync, readFile } from 'fs-extra';
+import { statSync, readFile, existsSync } from 'fs-extra';
 
 interface FileInfo {
   path: string;
@@ -29,6 +29,7 @@ export default class PViewFinder {
 
   public finder(): Promise<CompletionItem[]> {
     const files = walk(this.viewPath);
+    // TODO: 去重
     const findPviews: Promise<string | undefined>[] = files
       .map(this.joinFilePath)
       .filter(this.isFile)
@@ -37,7 +38,7 @@ export default class PViewFinder {
   }
 
   private isTsProject(rootPath: string) {
-    return statSync(path.resolve(rootPath, './tsconfig.json')).isFile();
+    return existsSync(path.resolve(rootPath, './tsconfig.json'));
   }
 
   private isFile(filePath: string) {
